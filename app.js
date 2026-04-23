@@ -1,4 +1,12 @@
+const nameInput = document.getElementById("name");
+const descInput = document.getElementById("desc");
+const imgInput = document.getElementById("img");
 const API = "http://localhost:3000/series";
+
+
+
+
+
 
 async function loadSeries() {
   const res = await fetch(API);
@@ -20,19 +28,23 @@ async function loadSeries() {
 document.getElementById("form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  await fetch(API, {
+  console.log("Submitting...");
+  console.log("NAME:", nameInput.value);
+
+  await fetch("http://localhost:3000/series", {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
+    headers: {
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify({
-      name: name.value,
-      description: desc.value,
-      image_url: img.value
+      name: nameInput.value,            // 👈 THIS WAS MISSING
+      description: descInput.value,
+      image_url: imgInput.value
     })
   });
 
   loadSeries();
 });
-
 async function deleteSeries(id) {
   await fetch(API + "/" + id, { method: "DELETE" });
   loadSeries();
