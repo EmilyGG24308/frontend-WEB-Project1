@@ -12,7 +12,7 @@ const API = "http://localhost:3000/series";
 
 
 async function loadSeries() {
-  const res = await fetch(API);
+  const res = await fetch(`${API}?sort=id&order=desc`);
   const data = await res.json();
 
   const list = document.getElementById("list");
@@ -61,7 +61,7 @@ document.getElementById("form").addEventListener("submit", async (e) => {
 
 });
 
-
+//DELETE
 async function deleteSeries(id) {
   await fetch(API + "/" + id, { method: "DELETE" });
   loadSeries();
@@ -113,7 +113,9 @@ async function searchSeries() {
 
 
   data.forEach(s => {
-    list.innerHTML += `
+    const li = document.createElement("li");
+
+    li.innerHTML += `
       <div>
         <h3>${s.name}</h3>
         <p>${s.description}</p>
@@ -125,5 +127,32 @@ async function searchSeries() {
     list.appendChild(li);
   });
 }
+//SORT
+async function sortSeries(sort, order) {
+  console.log("Sorting:", sort, order);
 
+  const res = await fetch(`${API}?sort=${sort}&order=${order}`);
+  const data = await res.json();
+
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+
+  data.forEach(s => {
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+      <div>
+        <b>${s.name}</b> - ${s.description}
+        <p>Rating: ${s.rating || "-"}/5</p>
+        <p>Genres: ${s.genre1 || "N/A"}, ${s.genre2 || "N/A"}</p>
+        ${s.image_url ? `<img src="${s.image_url}" width="100">` : ""}
+        <br>
+        <button onclick="editSeries(${s.id})">Edit</button>
+        <button onclick="deleteSeries(${s.id})">Delete</button>
+      </div>
+    `;
+
+    list.appendChild(li);
+  });
+}
 loadSeries();
