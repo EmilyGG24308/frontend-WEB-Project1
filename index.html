@@ -6,6 +6,11 @@
 <body>
 
 <h1>Series</h1>
+  <input id="search" placeholder="Search series..." />
+  <button onclick="searchSeries()">Search</button> 
+  <button onclick="loadSeries()">Show All</button>
+
+    <br><br><br>
 
 <form id="form">
   <input id="name" placeholder="Name" />
@@ -46,10 +51,11 @@
   <option>Drama</option>
 </select>
   <button>Add</button>
+
 </form>
 
 <ul id="list"></ul>
-<button onclick="editSeries()">Edit</button>
+
 
 
 <script src="app.js"></script>

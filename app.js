@@ -100,4 +100,30 @@ async function editSeries(id) {
   loadSeries();
 }
 
+//search series
+async function searchSeries() {
+  const q = document.getElementById("search").value;
+  console.log("Searching for:", q);
+
+  const res = await fetch(`http://localhost:3000/series?q=${q}`);
+  const data = await res.json();
+
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+
+
+  data.forEach(s => {
+    list.innerHTML += `
+      <div>
+        <h3>${s.name}</h3>
+        <p>${s.description}</p>
+        <p>Rating: ${s.rating||"-"}/5</p>
+        <p>Genres: ${s.genre1||"N/A"}, ${s.genre2||"N/A"}</p>
+        ${ s.image_url ? `<img src="${s.image_url}" alt="${s.name}" width="100">` : "" }
+      </div>
+    `;
+    list.appendChild(li);
+  });
+}
+
 loadSeries();
