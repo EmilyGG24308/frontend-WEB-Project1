@@ -20,6 +20,7 @@ async function loadSeries() {
 
   data.forEach(s => {
     const li = document.createElement("li");
+    console.log("EDIT ID:", s.id);
     li.innerHTML = `
       <div>
         <b>${s.name}</b> - ${s.description}
@@ -27,6 +28,7 @@ async function loadSeries() {
         <p>Genres: ${s.genre1||"N/A"}, ${s.genre2||"N/A"}</p>
         ${ s.image_url ? `<img src="${s.image_url}" alt="${s.name}" width="100">` : "" }
         <br>
+        <button onclick="editSeries(${s.id})">Edit</button>
         <button onclick="deleteSeries(${s.id})">Delete</button>
       </div>
     `;
@@ -56,9 +58,45 @@ document.getElementById("form").addEventListener("submit", async (e) => {
   });
 
   loadSeries();
+
 });
+
+
 async function deleteSeries(id) {
   await fetch(API + "/" + id, { method: "DELETE" });
+  loadSeries();
+}
+
+//edit
+async function editSeries(id) {
+  const name = prompt("New name (if applicable):");
+  const description = prompt("New description (if applicable):");
+  const image_url = prompt("New image URL (if applicable):");
+  const rating = prompt("New rating (if applicable):");
+  const genre1 = prompt("New genre 1 (if applicable):");
+  const genre2 = prompt("New genre 2 (if applicable):");
+
+  const body = {};
+
+
+
+  if (name !== null && name.trim() !== "") body.name = name;
+  if (description !== null && description.trim() !== "") body.description = description;
+  if (image_url !== null && image_url.trim() !== "") body.image_url = image_url;
+  if (rating !== null && rating.trim() !== "") body.rating = Number(rating);
+  if (genre1 !== null && genre1.trim() !== "") body.genre1 = genre1;
+  if (genre2 !== null && genre2.trim() !== "") body.genre2 = genre2;
+
+  console.log("Sending update...", body);
+
+  await fetch(`http://localhost:3000/series/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(body)
+  });
+
   loadSeries();
 }
 
