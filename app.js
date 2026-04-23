@@ -6,13 +6,16 @@ const genre1Input = document.getElementById("genre1");
 const genre2Input = document.getElementById("genre2");
 const API = "http://localhost:3000/series";
 
+let currentPage = 1;
+const limit = 4;
+
 
 
 
 
 
 async function loadSeries() {
-  const res = await fetch(`${API}?sort=id&order=desc`);
+  const res = await fetch(`${API}?sort=id&order=desc&page=${currentPage}&limit=${limit}`);
   const data = await res.json();
 
   const list = document.getElementById("list");
@@ -154,5 +157,19 @@ async function sortSeries(sort, order) {
 
     list.appendChild(li);
   });
+}
+
+//nextPAGE AND PREV
+function nextPage() {
+  console.log("Next CLICKED");
+  currentPage++;
+  loadSeries();
+}
+
+function prevPage() {
+  if (currentPage > 1) {
+    currentPage--;
+    loadSeries();
+  }
 }
 loadSeries();
