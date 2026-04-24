@@ -29,9 +29,16 @@
     <input id="search" placeholder="Search series...">
     <button onclick="searchSeries()">Search</button>
     <button onclick="loadSeries()">Reset</button>
+
+    < --sort buttons -->
+    <button onclick="sortSeries('name', 'asc')">Sort by Name (A-Z)</button>
+    <button onclick="sortSeries('name', 'desc')">Sort by Name (Z-A)</button>
+    <button onclick="sortSeries('rating', 'desc')">Sort by Rating(5-0.5)</button>
   </section>
 
   <ul id="list"></ul>
+  <button type="button" onclick="exportCSV(window.currentData)">Download CSV</button>
+  
 
   <section class="pagination">
     <button onclick="prevPage()">⬅ Prev</button>

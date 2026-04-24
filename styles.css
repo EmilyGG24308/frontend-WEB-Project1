@@ -126,11 +126,24 @@ form button {
 }
 
 .card-buttons button:first-child {
-  background: #449b58;
+  background: #28a745;
   color: white;
 }
 
 .card-buttons button:last-child {
-  background: #b9313f;
+  background: #dc3545;
   color: white;
+}
+
+.controls button {
+  background: #3B82F6;
+  color: white;
+}
+
+.controls button:hover {
+  background: #1E3A8A;
+}
+
+button {
+  margin: 5px;
 }
