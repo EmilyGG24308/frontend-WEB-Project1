@@ -4,7 +4,7 @@ const imgInput = document.getElementById("img");
 const ratingInput = document.getElementById("rating");
 const genre1Input = document.getElementById("genre1");
 const genre2Input = document.getElementById("genre2");
-const API = "https://backend-web-project1-1.onrender.com/series"; //a
+const API = "https://backend-web-project1-1.onrender.com";
 
 let currentPage = 1;
 const limit = 4;
@@ -15,7 +15,7 @@ const limit = 4;
 
 
 async function loadSeries() {
-  const res = await fetch(`${API}?sort=id&order=desc&page=${currentPage}&limit=${limit}`);
+  const res = await fetch(`${API}?page=${currentPage}&limit=${limit}`);
   const data = await res.json();
 
   const list = document.getElementById("list");
@@ -66,7 +66,7 @@ document.getElementById("form").addEventListener("submit", async (e) => {
 
 //DELETE
 async function deleteSeries(id) {
-  await fetch(API + "/" + id, { method: "DELETE" });
+  await fetch(`${API}/${id}`, { method: "DELETE" });
   loadSeries();
 }
 
