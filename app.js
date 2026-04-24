@@ -17,6 +17,7 @@ const limit = 4;
 async function loadSeries() {
   const res = await fetch(`${API}?page=${currentPage}&limit=${limit}`);
   const data = await res.json();
+  window.currentData = data;
 
   const list = document.getElementById("list");
   list.innerHTML = "";
@@ -172,4 +173,21 @@ function prevPage() {
     loadSeries();
   }
 }
+
+function exportCSV(data) {
+  let csv = "Name,Description,Rating,Genre1,Genre2\n";
+
+  data.forEach(s => {
+    csv += `${s.name},${s.description},${s.rating},${s.genre1},${s.genre2}\n`;
+  });
+
+  const blob = new Blob([csv], { type: "text/csv" });
+  const url = window.URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "series.csv";
+  a.click();
+}
+
 loadSeries();
