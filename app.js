@@ -27,7 +27,7 @@ async function loadSeries() {
     console.log("EDIT ID:", s.id);
     li.innerHTML = `
       <div class="card">
-        ${s.image_url ? `<img class="card-img" src="${s.image_url}">` : ""}
+        ${s.image_url ? `<img class="thumb" src="${s.image_url}">` : ""}
     
         <div class="card-content">
           <h3>${s.name}</h3>
@@ -151,14 +151,19 @@ async function sortSeries(sort, order) {
     const li = document.createElement("li");
 
     li.innerHTML = `
-      <div>
-        <b>${s.name}</b> - ${s.description}
-        <p>Rating: ${s.rating || "-"}/5</p>
-        <p>Genres: ${s.genre1 || "N/A"}, ${s.genre2 || "N/A"}</p>
-        ${s.image_url ? `<img src="${s.image_url}" width="100">` : ""}
-        <br>
-        <button onclick="editSeries(${s.id})">Edit</button>
-        <button onclick="deleteSeries(${s.id})">Delete</button>
+      <div class="card">
+        <div class="card-content">
+          <h3>${s.name}</h3>
+          <p>${s.description}</p>
+          <p><b>Rating:</b> ${s.rating || "-"}/5</p>
+          <p><b>Genres:</b> ${s.genre1 || "N/A"}, ${s.genre2 || "N/A"}</p>
+          ${s.image_url ? `<img class="thumb" src="${s.image_url}">` : ""}
+
+          <div class="card-buttons">
+            <button onclick="editSeries(${s.id})">Edit</button>
+            <button onclick="deleteSeries(${s.id})">Delete</button>
+          </div>
+        </div>
       </div>
     `;
 
