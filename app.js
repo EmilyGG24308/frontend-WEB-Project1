@@ -4,7 +4,7 @@ const imgInput = document.getElementById("img");
 const ratingInput = document.getElementById("rating");
 const genre1Input = document.getElementById("genre1");
 const genre2Input = document.getElementById("genre2");
-const API = "http://localhost:3000/series";
+const API = "https://backend-web-project1-1.onrender.com";
 
 let currentPage = 1;
 const limit = 4;
