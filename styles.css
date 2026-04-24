@@ -114,14 +114,6 @@ form button {
   margin-top: 0;
 }
 
-.card-buttons {
-  margin-top: 10px;
-}
-
-.card-buttons button:first-child {
-  background: #28a745;
-  color: white;
-}
 
 .card-buttons button:last-child {
   background: #dc3545;
@@ -137,9 +129,6 @@ form button {
   background: #1E3A8A;
 }
 
-button {
-  margin: 5px;
-}
 
 .thumb {
   width: 100px;
@@ -147,4 +136,25 @@ button {
   object-fit: cover;
   border-radius: 10px;
   margin-top: 10px;
+}
+
+.card-horizontal {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-text {
+  flex: 1;
+}
+
+
+.card-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.card-buttons button {
+  padding: 8px 12px;
 }
