@@ -45,7 +45,7 @@ document.getElementById("form").addEventListener("submit", async (e) => {
   console.log("Submitting...");
   console.log("NAME:", nameInput.value);
 
-  await fetch("http://localhost:3000/series", {
+  await fetch(`${API}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -92,7 +92,7 @@ async function editSeries(id) {
 
   console.log("Sending update...", body);
 
-  await fetch(`http://localhost:3000/series/${id}`, {
+  await fetch(`${API}/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
@@ -108,7 +108,7 @@ async function searchSeries() {
   const q = document.getElementById("search").value;
   console.log("Searching for:", q);
 
-  const res = await fetch(`http://localhost:3000/series?q=${q}`);
+  const res = await fetch(`${API}?q=${q}`);
   const data = await res.json();
 
   const list = document.getElementById("list");
