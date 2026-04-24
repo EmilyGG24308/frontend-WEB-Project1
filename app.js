@@ -26,14 +26,20 @@ async function loadSeries() {
     const li = document.createElement("li");
     console.log("EDIT ID:", s.id);
     li.innerHTML = `
-      <div>
-        <b>${s.name}</b> - ${s.description}
-        <p>Rating: ${s.rating||"-"}/5</p>
-        <p>Genres: ${s.genre1||"N/A"}, ${s.genre2||"N/A"}</p>
-        ${ s.image_url ? `<img src="${s.image_url}" alt="${s.name}" width="100">` : "" }
-        <br>
-        <button onclick="editSeries(${s.id})">Edit</button>
-        <button onclick="deleteSeries(${s.id})">Delete</button>
+      <div class="card">
+        ${s.image_url ? `<img class="card-img" src="${s.image_url}">` : ""}
+    
+        <div class="card-content">
+          <h3>${s.name}</h3>
+          <p>${s.description}</p>
+          <p><b>Rating:</b> ${s.rating || "-"}/5</p>
+          <p><b>Genres:</b> ${s.genre1 || "N/A"}, ${s.genre2 || "N/A"}</p>
+
+          <div class="card-buttons">
+            <button onclick="editSeries(${s.id})">Edit</button>
+            <button onclick="deleteSeries(${s.id})">Delete</button>
+          </div>
+        </div>
       </div>
     `;
     list.appendChild(li);

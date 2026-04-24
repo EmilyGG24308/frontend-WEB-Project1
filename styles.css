@@ -1,0 +1,136 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #ecf2f8;
+}
+
+.app {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-section {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+form {
+  display: grid;
+  gap: 10px;
+}
+
+input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+form button {
+  background: #007bff;
+  color: white;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.controls button {
+  background: #6c757d;
+  color: white;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+#list {
+  list-style: none;
+  padding: 0;
+}
+
+#list li {
+  background: white;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+#list img {
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.card-buttons button:first-child {
+  background: #28a745;
+  color: white;
+}
+
+.card-buttons button:last-child {
+  background: #dc3545;
+  color: white;
+}
+
+
+.card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.card-content {
+  padding: 15px;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.card-buttons {
+  margin-top: 10px;
+}
+
+.card-buttons button:first-child {
+  background: #449b58;
+  color: white;
+}
+
+.card-buttons button:last-child {
+  background: #b9313f;
+  color: white;
+}
